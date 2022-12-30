@@ -15,7 +15,14 @@ const formattedPosts = formatBlogPosts(allPosts);
         <ul>
         {
             formattedPosts.map((post) => (
-                <BlogPost title={post.frontmatter.title} url={post.url} date={post.frontmatter.date} />
+                <BlogPost 
+                title={post.frontmatter.title}
+                description={post.frontmatter.description}
+                author={post.frontmatter.author}
+                imageUrl={post.frontmatter.image.url}
+                imageAlt={post.frontmatter.image.alt}
+                tags={post.frontmatter.tags}
+                date={post.frontmatter.date} />
             ))
         }
         </ul>

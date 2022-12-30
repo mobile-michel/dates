@@ -1,5 +1,16 @@
 ---
-const { title, url, date } = Astro.props;
+const { title, date, description, author, imageUrl, imageAlt, tags } = Astro.props;
 ---
 
-<li><a href={url}>{title}</a> - {date.slice(0, 10)}</li>
+<article>
+    <header>
+        <h2>{title}</h2>
+        <p>Author: {author}</p>
+    </header>
+    <p>{description}</p>
+    <img src={imageUrl} alt={imageAlt}>
+    <footer>
+        <p>published on {date.slice(0, 10)}</p>
+        <p>tags: {tags}</p>
+    </footer>
+</article>

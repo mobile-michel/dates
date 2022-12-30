@@ -20,9 +20,9 @@ export function formatBlogPosts(posts, {
   
    }, [])
   
-    // sortByDate or randomize
+    // sortByDate or randomize (Si "+", ordre chronologique. Si "-", ordre inverse)
     if(sortByDate){
-      filteredPosts.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
+      filteredPosts.sort((a, b) => new Date(b.frontmatter.date) + new Date(a.frontmatter.date))
     } else {
       filteredPosts.sort(() => Math.random() - 0.5)
     }
