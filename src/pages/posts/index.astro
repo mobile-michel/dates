@@ -1,0 +1,25 @@
+---
+// utils imports
+import { formatBlogPosts } from "../../js/utils";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostLayout from "../../layouts/PostLayout.astro";
+import BlogPost from "../../components/BlogPost.astro";
+
+const allPosts = await Astro.glob("./*.md");
+const formattedPosts = formatBlogPosts(allPosts);
+---
+
+<BaseLayout title="My Blog">
+  <section class="container" aria-label="New Blog Posts">
+    <h1 class="h1">New Blog Posts</h1>
+    <div class="post-container">
+        <ul>
+        {
+            formattedPosts.map((post) => (
+                <BlogPost title={post.frontmatter.title} url={post.url} date={post.frontmatter.date} />
+            ))
+        }
+        </ul>
+    </div>
+  </section>
+</BaseLayout>
